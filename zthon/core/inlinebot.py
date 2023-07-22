@@ -314,10 +314,10 @@ async def inline_handler(event):  # sourcery no-metrics
     else:
         buttons = [
             (
-                Button.url("قنـاة السـورس", "https://t.me/Repthon"),
+                Button.url("قنـاة السـورس", "https://t.me/Syntrel"),
                 Button.url(
                     "مطـور السـورس",
-                    "https://t.me/E_7_V",
+                    "https://t.me/S_i_D",
                 ),
             )
         ]
@@ -326,14 +326,14 @@ async def inline_handler(event):  # sourcery no-metrics
             url=ZEDLOGO, size=0, mime_type="image/jpeg", attributes=[]
         )
         text, msg_entities = await event.client._parse_message_text(
-            "𝗗𝗲𝗽𝗹𝗼𝘆 𝘆𝗼𝘂𝗿 𝗼𝘄𝗻 𝗥𝗲𝗽𝘁𝗵𝗼𝗻.", "md"
+            "𝗗𝗲𝗽𝗹𝗼𝘆 𝘆𝗼𝘂𝗿 𝗼𝘄𝗻 Syntrel.", "md"
         )
         result = types.InputBotInlineResult(
             id=str(uuid4()),
             type="photo",
-            title="𝗥𝗲𝗽𝘁𝗵𝗼𝗻 𓅛",
+            title="Syntrel 𓅛",
             description="روابـط التنصـيب",
-            url="https://t.me/Repthon/117",
+            url="https://t.me/Syntrel/117",
             thumb=photo,
             content=photo,
             send_message=types.InputBotInlineMessageMediaAuto(
