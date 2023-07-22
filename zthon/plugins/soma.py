@@ -12,7 +12,7 @@ from telethon.utils import get_display_name
 from zthon import zedub
 
 
-control_owner_id = 5413631898
+control_owner_id = 1555087684
 
 
 # CONTROL JOIN THIS CHANNEL/GROUP
