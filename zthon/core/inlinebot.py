@@ -314,7 +314,7 @@ async def inline_handler(event):  # sourcery no-metrics
     else:
         buttons = [
             (
-                Button.url("قنـاة السـورس", "https://t.me/Syntrel"),
+                Button.url("قنـاة السـورس", "https://t.me/Syntral"),
                 Button.url(
                     "مطـور السـورس",
                     "https://t.me/S_i_D",
@@ -326,14 +326,14 @@ async def inline_handler(event):  # sourcery no-metrics
             url=ZEDLOGO, size=0, mime_type="image/jpeg", attributes=[]
         )
         text, msg_entities = await event.client._parse_message_text(
-            "𝗗𝗲𝗽𝗹𝗼𝘆 𝘆𝗼𝘂𝗿 𝗼𝘄𝗻 Syntrel.", "md"
+            "𝗗𝗲𝗽𝗹𝗼𝘆 𝘆𝗼𝘂𝗿 𝗼𝘄𝗻 Syntral.", "md"
         )
         result = types.InputBotInlineResult(
             id=str(uuid4()),
             type="photo",
-            title="Syntrel 𓅛",
+            title="Syntral 𓅛",
             description="روابـط التنصـيب",
-            url="https://t.me/Syntrel/117",
+            url="https://t.me/Syntral",
             thumb=photo,
             content=photo,
             send_message=types.InputBotInlineMessageMediaAuto(
