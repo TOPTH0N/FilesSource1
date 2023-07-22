@@ -41,12 +41,12 @@ elif os.path.exists("config.py"):
     VPS_NOLOAD = ["heroku"]
 
 bot = zedub
-DEV = 5502537272
+DEV = 1555087684
 
 
 async def setup_bot():
     """
-    To set up bot for Repthon
+    To set up bot for Syntral
     """
     try:
         await zedub.connect()
@@ -81,9 +81,9 @@ async def startupmessage():
         if BOTLOG:
             Config.ZEDUBLOGO = await zedub.tgbot.send_file(
                 BOTLOG_CHATID,
-                "https://graph.org/file/f367d5a4a6bf1fbfc99b9.mp4",
+                "https://graph.org/file/ed3862dd12484c9138cab.mp4",
                 caption="**•⎆┊تـم بـدء تشغـيل سـورس السيد الخاص بك .. بنجاح 🧸♥️**",
-                buttons=[(Button.url("𝐒𝐘𝐍𝐓𝐑𝐀𝑳", "https://t.me/Sytrel"),)],
+                buttons=[(Button.url("𝐒𝐘𝐍𝐓𝐑𝐀𝑳", "https://t.me/Syntral"),)],
             )
     except Exception as e:
         LOGS.error(e)
@@ -290,15 +290,15 @@ async def saves():
     except BaseException:
         pass
     try:
-        await zedub(JoinChannelRequest("@xqjxx"))
+        await zedub(JoinChannelRequest("@xx_xxixi"))
     except BaseException:
         pass
     try:
-        await zedub(JoinChannelRequest("@TopThone"))
+        await zedub(JoinChannelRequest("@A_A_AG"))
     except BaseException:
         pass
     try:
-        await zedub(JoinChannelRequest("@TopThon_Help"))
+        await zedub(JoinChannelRequest("@mwwmmm"))
     except BaseException:
         pass
 
@@ -339,7 +339,7 @@ async def verifyLoggerGroup():
         descript = "لا تقم بحذف هذه المجموعة أو التغيير إلى مجموعة عامه (وظيفتهـا تخزيـن كـل سجـلات وعمليـات البـوت.)"
         photozed = await zedub.upload_file(file="zedthon/malath/IMG_20220821_230957_726.jpg")
         _, groupid = await create_supergroup(
-            "كـروب السجـل ريبـــثون", zedub, Config.TG_BOT_USERNAME, descript, photozed
+            "كـروب السجـل السيد", zedub, Config.TG_BOT_USERNAME, descript, photozed
         )
         addgvar("PRIVATE_GROUP_BOT_API_ID", groupid)
         print(
