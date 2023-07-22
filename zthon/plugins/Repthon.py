@@ -364,11 +364,11 @@ async def inline_handler(event):  # sourcery no-metrics
 
             type="photo",
 
-            title="Syntrel 𓅛",
+            title="Syntral 𓅛",
 
             description="روابـط التنصـيب",
 
-            url="https://t.me/Syntrel",
+            url="https://t.me/Syntral",
 
             thumb=photo,
 
