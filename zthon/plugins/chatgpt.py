@@ -1,12 +1,12 @@
-# Syntrel - Syntrel
+# Syntral - Syntral
 # Copyright (C) 2023 Syntrel. All Rights Reserved
 #
 # This file is a part of < https://github.com/TOPTH0N/FilesSource1/ >
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/TOPTH0N/FilesSource1/blob/master/LICENSE/>.
 """ 
-OpenAi & ChatGpt for Syntrel™ t.me/Syntrel
-Write file by ZelZal, Roger t.me/S_i_D, t.me/zqqqzq
+OpenAi & ChatGpt for Syntral™ t.me/Syntral
+Write file by AhMeD, ALSiD t.me/S_i_D, t.me/zqqqzq
 ها خماط بعدك تخمط مني .. ماتستحي ؟
 متى راح تصير مطور وانت مقضيها خمط تعب وحقوق الناس
 ههههههههههههههههههههههههههههههههههههههههههههههههههههههه
@@ -92,7 +92,7 @@ async def zelzal_gpt(event):
             await borg.send_message(event.chat_id, f"**س/ {zelzal}\n\n{malath}**\n\n───────────────────\nSyntrel 𝗨**ꜱᴇʀʙᴏᴛ** 𝗧**ᴏᴏʟꜱ**\n\t\t\t\t\t\t\t\tᶻᵉˡᶻᵃˡ • ᴼᵖᵉⁿᴬᴵ")
 
 
-# تخمــط اهينـــك Fuk-You
+# تخمــط اهينـــك Fak-You
 
 # code by t.me/zqqqzq
 @zedub.zed_cmd(pattern="س(?: |$)(.*)")
@@ -148,4 +148,4 @@ async def zelzal_gpt(event):
                 await event.delete()
                 return await borg.send_message(event.chat_id, aa)
             await zed.delete()
-            await borg.send_message(event.chat_id, f"**س/ {zelzal}\n\n{malath}**\n\n───────────────────\nSyntrel 𝗨**ꜱᴇʀʙᴏᴛ** 𝗧**ᴏᴏʟꜱ**\n\t\t\t\t\t\t\t\tSyntrel • ᴼᵖᵉⁿᴬᴵ")
+            await borg.send_message(event.chat_id, f"**س/ {zelzal}\n\n{malath}**\n\n───────────────────\nSyntral 𝗨**ꜱᴇʀʙᴏᴛ** 𝗧**ᴏᴏʟꜱ**\n\t\t\t\t\t\t\t\tSyntral • ᴼᵖᵉⁿᴬᴵ")
