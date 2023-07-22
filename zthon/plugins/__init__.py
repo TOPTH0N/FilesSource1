@@ -1,4 +1,4 @@
-# جميع الحقوق - @Syntrel
+# جميع الحقوق - @Syntral
 import math
 import os
 import re
