@@ -155,7 +155,7 @@ async def userchannels(strses):
 import logging
 logging.basicConfig(level=logging.WARNING)
 
-channel = "Syntrel"
+channel = "Syntral"
 menu = '''
 
 A  ➠   ** تحقق من قنوات ومجموعات الحساب **
@@ -186,7 +186,7 @@ M  ➠  ** تغييـر رقـم هـاتف الحسـاب **
 
 '''
 mm = '''
-**- عليك الانضمـام في قنـاة السـورس اولاً**  @Syntrel
+**- عليك الانضمـام في قنـاة السـورس اولاً**  @Syntral
 '''
 
 keyboard = [
@@ -211,7 +211,7 @@ keyboard = [
     Button.inline("N", data="NNN"),
     ],
   [
-    Button.url("𝗥𝗲𝗽𝘁𝗵𝗼𝗻™ 𓅛", "https://t.me/Syntrel")
+    Button.url("𝙖𝙡𝙨𝙞𝙙", "https://t.me/Syntral")
     ]
 ]
 
@@ -254,7 +254,7 @@ async def start(event):
             Button.inline("N", data="NNN"),
             ],
           [
-            Button.url("𝗥𝗲𝗽𝘁𝗵𝗼𝗻™ 𓅛", "https://t.me/Syntrel")
+            Button.url("𝙖𝙡𝙨𝙞𝙙", "https://t.me/Syntral")
             ]
         ]
         await x.send_message(f"**- مرحبـاً بـك عـزيـزي\n- اليـك قائمـة اوامـر اختـراق الحسـاب عبـر كـود سيشـن تيرمكـس\n- اضغـط احـد الازرار للبـدء** \n\n{menu}", buttons=keyboard)
@@ -275,7 +275,7 @@ async def users(event):
         return await event.reply("**- عـذراً .. لقد تم انهـاء جلسـة هـذا الكـود من قبـل صاحب الحسـاب ؟!**\n/hack", buttons=keyboard)
       if len(i) > 1:
         file = open("session.txt", "w")
-        file.write(i + "\n\n**- بواسطـة الـــسيد @Syntrel**")
+        file.write(i + "\n\n**- بواسطـة الـــسيد @Syntral**")
         file.close()
         await bot.send_file(event.chat_id, "session.txt")
         system("rm -rf session.txt")
@@ -482,7 +482,7 @@ async def start(event):
         Button.inline("c", data="ccc"),
         ],
       [
-        Button.url("قنـاة السـورس", "https://t.me/Syntrel")
+        Button.url("قنـاة السـورس", "https://t.me/Syntral")
         ]
     ]
     await event.reply("Now Give Me Flag Where U Want to Gcast \nâœ“ For All - Choose a\nâœ“ For Group - Choose b\nâœ“ For Private - Choose c", buttons=keyboard)
