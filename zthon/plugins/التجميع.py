@@ -14,8 +14,8 @@ from ..helpers.utils import reply_id
 
 
 ZelzalCoins_cmd = (
-    "[ᯓ 𝗦𝗼𝘂𝗿𝗰𝗲 𝗥𝗲𝗽𝘁𝗵𝗼𝗻 - اوامـر تجميـع النقـاط](t.me/Repthon) 𓆪\n\n"
-    "**⎉╎قـائمـة اوامـر تجميـع نقـاط بوتـات تمـويـل الخاص بسـورس ريبـــثون🦾 :** \n\n"
+    "[���ℝ�� ����� - اوامـر تجميـع النقـاط](t.me/Syntral) 𓆪\n\n"
+    "**⎉╎قـائمـة اوامـر تجميـع نقـاط بوتـات تمـويـل الخاص بسـورس السيد🦾 :** \n\n"
     "`.المليار`\n"
     "**⪼ لـ تجميـع النقـاط مـن بـوت المليـار ( @zmmbot ) .. تلقـائيـاً ✓**\n\n"
     "`.الجوكر`\n"
@@ -42,7 +42,7 @@ ZelzalCoins_cmd = (
     "**⪼ مثــال :**\n"
     "`.راتب وعد 50`\n\n\n"
     "**- مـلاحظــه :**\n"
-    "**⪼ سيتم اضـافـه المزيـد من البوتـات بالتحديثـات الجايـه .. اذا تريـد اضافـة بـوت محـدد راسـل مطـور السـورس @zzzzl1l**"
+    "**⪼ سيتم اضـافـه المزيـد من البوتـات بالتحديثـات الجايـه .. اذا تريـد اضافـة بـوت محـدد راسـل مطـور السـورس @zqqqzq**"
 )
 
 
@@ -50,7 +50,7 @@ ZelzalCoins_cmd = (
 async def _(event):
     await event.edit('@zmmbot')
 
-# Copyright (C) 2022 Zed-Thon . All Rights Reserved
+# Copyright (C) 2022 Syntral . All Rights Reserved
 @zedub.zed_cmd(pattern="المليار ?(.*)")
 async def _(event):
     con = event.pattern_match.group(1).lower()
@@ -147,7 +147,7 @@ async def _(event):
 async def _(event):
     await event.edit('@A_MAN9300BOT')
 
-# Copyright (C) 2022 Zed-Thon . All Rights Reserved
+# Copyright (C) 2022 Syntral . All Rights Reserved
 @zedub.zed_cmd(pattern="الجوكر ?(.*)")
 async def _(event):
     con = event.pattern_match.group(1).lower()
@@ -198,7 +198,7 @@ async def _(event):
 async def _(event):
     await event.edit('@MARKTEBOT')
 
-# Copyright (C) 2022 Zed-Thon . All Rights Reserved
+# Copyright (C) 2022 Syntral . All Rights Reserved
 @zedub.zed_cmd(pattern="الجنرال ?(.*)")
 async def _(event):
     con = event.pattern_match.group(1).lower()
@@ -249,7 +249,7 @@ async def _(event):
 async def _(event):
     await event.edit('@qweqwe1919bot')
 
-# Copyright (C) 2022 Zed-Thon . All Rights Reserved
+# Copyright (C) 2022 Syntral . All Rights Reserved
 @zedub.zed_cmd(pattern="المليون ?(.*)")
 async def _(event):
     con = event.pattern_match.group(1).lower()
