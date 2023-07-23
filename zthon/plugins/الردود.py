@@ -18,7 +18,7 @@ plugin_category = "العروض"
 
 
 BaqirWF_cmd = (
-    "𓆩 [𝗦����� ����� 𝗖𝗼𝗻𝗳𝗶𝗴 - اوامـر الـردود / والتـرحيب](t.me/Syntral) 𓆪\n\n"
+    "𓆩 [ՏOᑌᖇᑕᗴ ᗩᒪՏIᗪ - ᑕOᑎᖴIᘜ - اوامـر الـردود / والتـرحيب](t.me/Syntral) 𓆪\n\n"
     "**✾╎قائـمه اوامـر الـردود 🦾 :** \n\n"
     "**⎞𝟏⎝** `.رد`\n"
     "**•• ⦇الامـر + اسـم الـرد بالـرد ع كلمـة الـرد او بالـرد ع ميديـا⦈ لـ اضـافة رد بالكـروب**\n\n"
@@ -42,7 +42,7 @@ BaqirWF_cmd = (
     "**•• لـ حـذف تـرحيـب الخـاص**\n\n"
     "**⎞𝟏𝟎⎝** `.جلب رحب`\n"
     "**•• لـ جـلب تـرحيـب الخـاص **\n\n"
-    "\n 𓆩 [������ �����](t.me/Syntral) 𓆪"
+    "\n 𓆩 [ՏOᑌᖇᑕᗴ ᗩᒪՏIᗪ ](t.me/Syntral) 𓆪"
 )
 
 
@@ -195,7 +195,7 @@ async def on_snip_list(event):
     filters = get_filters(event.chat_id)
     for filt in filters:
         if OUT_STR == "** ❈╎لاتوجـد ردود في هـذه الدردشـه ༗**":
-            OUT_STR = "𓆩 ������ ����� - �����  𝑭𝑰𝑳𝑻𝑬𝑹𝑺 𓆪\n 𓍹ⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧ𓍻\n**  ⪼ قائمـه الـردود في هذه الدردشـه :  **\n"
+            OUT_STR = "𓆩 ՏOᑌᖇᑕᗴ ᗩᒪՏIᗪ - ᑕOᑎᖴIᘜ ᖴIᒪTᗴᖇՏ 𓆪\n 𓍹ⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧ𓍻\n**  ⪼ قائمـه الـردود في هذه الدردشـه :  **\n"
         OUT_STR += "⪼ {}  𓆰.\n".format(filt.keyword)
     await edit_or_reply(
         event,
@@ -235,6 +235,6 @@ async def on_all_snip_delete(event):
     filters = get_filters(event.chat_id)
     if filters:
         remove_all_filters(event.chat_id)
-        await edit_or_reply(event, "𓆩 ������ �����  - �����  𝑭𝑰𝑳𝑻𝑬𝑹𝑺 𓆪\n 𓍹ⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧ𓍻\n**⪼ تم حذف جـميع الــردود المضـافـهہ بنجـاح☑️**")
+        await edit_or_reply(event, "𓆩 ՏOᑌᖇᑕᗴ ᗩᒪՏIᗪ - ᑕOᑎᖴIᘜ ᖴIᒪTᗴᖇՏ 𓆪\n 𓍹ⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧⵧ𓍻\n**⪼ تم حذف جـميع الــردود المضـافـهہ بنجـاح☑️**")
     else:
         await edit_or_reply(event, "**❈╎عـذراً .. لا توجـد ردود في هـذه المجموعـه**")
