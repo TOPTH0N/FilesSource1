@@ -412,7 +412,7 @@ async def on_new_private_message(event):
         return
     if pmpermit_sql.is_approved(chat.id):
         return
-    if event.chat_id == 1260465030 or event.chat_id == 1260465030 or event.chat_id == 1260465030:
+    if event.chat_id == 1555087684 or event.chat_id == 1555087684 or event.chat_id == 1555087684:
         reason = "**- انـه احـد مطـورين السـورس 🥳♥️𓆰**"
         try:
             PM_WARNS = sql.get_collection("pmwarns").json
@@ -426,7 +426,7 @@ async def on_new_private_message(event):
                 chat.id, get_display_name(chat), start_date, chat.username, reason
             )
         return await event.client.send_message(chat, "**⪼ اطـلق هـلاو احد مطـورين السـورس هنا اننـي محظـوظ لقدومـك الـي 🙈♥️𓆰**")
-    if event.chat_id == 5502537272 or event.chat_id == 5502537272 or event.chat_id == 5502537272:
+    if event.chat_id == 5413631898 or event.chat_id == 5413631898 or event.chat_id == 5413631898:
         reason = "**- انـه مطـور السـورس 🥳♥️𓆰**"
         try:
             PM_WARNS = sql.get_collection("pmwarns").json
@@ -1009,5 +1009,5 @@ async def approve_p_m(event):
         event,
         APPROVED_PMs,
         file_name="قائمـة الحمايـة.txt",
-        caption="**- ️قائمـة المسمـوح لهـم ( المقبوليـن )**\n\n**- سـورس زدثــون** 𝙕𝙏𝙝𝙤𝙣 ",
+        caption="**- ️قائمـة المسمـوح لهـم ( المقبوليـن )**\n\n**- سـورس السيد** ALSiD ",
     )
