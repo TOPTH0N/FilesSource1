@@ -127,8 +127,8 @@ async def do_pm_permit_action(event, chat):  # sourcery no-metrics
             remwarns=remwarns,
         )
     elif gvarstatus("pmmenu") is None:
-        USER_BOT_NO_WARN = f"""𓆩𝙎𝙊𝙐𝙍𝘾𝙀 𝙍𝙀𝙋𝙏𝙃𝙊𝙉 - 𝑷𝑴 𝑺𝑬𝑪𝑼𝑹𝑰𝑻𝒀𓆪
-◐━─━─━─━─𝙍𝙀𝙋𝙏𝙃𝙊𝙉─━─━─━─━◐
+        USER_BOT_NO_WARN = f"""𓆩SOURCE ALSiD - 𝑷𝑴 𝑺𝑬𝑪𝑼𝑹𝑰𝑻𝒀𓆪
+◐━─━─━─━─ALSiD─━─━─━─━◐
 
 ❞ **هها هلو**  {mention} ❝
 
@@ -137,8 +137,8 @@ async def do_pm_permit_action(event, chat):  # sourcery no-metrics
 
 **⤶ فقط قل سبب مجيئك او اختـر احـد الخيـارات بالاسفـل ⬇️ وانتظـر الـرد ⏳**"""
     else:
-        USER_BOT_NO_WARN = f"""𓆩𝙎𝙊𝙐𝙍𝘾𝙀 𝙍𝙀𝙋𝙏𝙃𝙊𝙉 - 𝑷𝑴 𝑺𝑬𝑪𝑼𝑹𝑰𝑻𝒀𓆪
-◐━─━─━─━─𝙍𝙀𝙋𝙏𝙃𝙊𝙉─━─━─━─━◐
+        USER_BOT_NO_WARN = f"""𓆩SOURCE ALSiD - 𝑷𝑴 𝑺𝑬𝑪𝑼𝑹𝑰𝑻𝒀𓆪
+◐━─━─━─━─ALSiD─━─━─━─━◐
 
 ❞ **هها هلو**  {mention} ❝
 
