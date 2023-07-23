@@ -49,8 +49,6 @@ async def amireallyalive(event):
         pyver=python_version(),
         dbhealth=check_sgnirts,
         ping=ms,
-        Dev¹ : @S_i_D
-        Dev² : @zqqqzq
     )
     if ZED_IMG:
         ZED = [x for x in ZED_IMG.split()]
@@ -102,6 +100,7 @@ async def amireallyialive(event):
     zed_caption += f"**{Z_EMOJI} إصـدار السيد :** `{repversion}`\n"
     zed_caption += f"**{Z_EMOJI} إصـدار البـايثون :** `{python_version()}\n`"
     zed_caption += f"**{Z_EMOJI} المسـتخدم :** {mention}\n"
+    zed_caption += f"**{Z_EMOJI} المطورين ~ @S_i_D ٬ @zqqqzq
     results = await event.client.inline_query(Config.TG_BOT_USERNAME, zed_caption)
     await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
     await event.delete()
