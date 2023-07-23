@@ -1,5 +1,5 @@
-# Repthon - Roger
-# © Repthon Team 2023
+# Syntral - ALSiD
+# © Syntral Team 2023
 # ها شعدك داخل ع الملف تريد تخمط ؟ ابو زربة لهل درجة فاشل  
 
 from telethon import events
