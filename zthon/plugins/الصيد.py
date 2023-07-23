@@ -1,4 +1,4 @@
-# by: t.me/Dar4k  ~ t.me/R0R77 ~ t.me/E_7_V
+# by: t.me/Dar4k  ~ t.me/R0R77 ~ t.me/S_i_D
 
 import random
 
@@ -108,7 +108,7 @@ def gen_user(choice):
 async def _(event):
     await event.edit(
         """
-**أوامـر الـصـيـد الخـاصة بــســورس ريبـــثون**: 
+**أوامـر الـصـيـد الخـاصة بــســورس السيد**: 
 
 ٴ— — — — — — — — — —
 
@@ -127,7 +127,7 @@ async def _(event):
 الامر:  `.حالة التثبيت`
 • لمعرفة عدد المحاولات للصيد
 
-**@Repthon - channle userbot**
+**@Syntral - channle userbot**
 
 """
     )
@@ -140,8 +140,8 @@ async def hunterusername(event):
     try:
         ch = await zedub(
             functions.channels.CreateChannelRequest(
-                title="REPTHON HUNTER - صيد ريبثون",
-                about="This channel to hunt username by - @Repthon",
+                title="Syntral HUNTER - صيد السيد",
+                about="This channel to hunt username by - @Syntral",
             )
         )
         ch = ch.updates[1].channel_id
@@ -169,20 +169,20 @@ async def hunterusername(event):
                 )
                 await event.client.send_file(
                     event.chat_id,
-                    "https://t.me/Repthongif/2",
-                    caption="🐊 Repthon the best 🐊\n- - - - - - - - - - - - - - - - - - - - - - - -\n- UserName: ❲ @{} ❳\n- ClickS: ❲ {} ❳\n- Type: {}\n- Save: ❲ Chaneel ❳\n- - - - - - - - - - - - - - - - - - - - - - - -\nThE KiNgS ❲ @Repthon - @E_7_V ❳ ".format(
+                    "https://t.me/Syntralgif/2",
+                    caption="🐊 Syntral the best 🐊\n- - - - - - - - - - - - - - - - - - - - - - - -\n- UserName: ❲ @{} ❳\n- ClickS: ❲ {} ❳\n- Type: {}\n- Save: ❲ Chaneel ❳\n- - - - - - - - - - - - - - - - - - - - - - - -\nThE KiNgS ❲ @Syntral - @S_i_D ❳ ".format(
                         username, trys, choice
                     ),
                 )
                 await event.client.send_file(
                     ch,
-                    "https://t.me/Repthongif/2",
-                    caption="🐊 Repthon the best 🐊\n- - - - - - - - - - - - - - - - - - - - - - - -\n- UserName: ❲ @{} ❳\n- ClickS: ❲ {} ❳\n- Type: {}\n- Save: ❲ Chaneel ❳\n- - - - - - - - - - - - - - - - - - - - - - - -\nThE KiNgS ❲ @Repthon - @E_7_V ❳ ".format(
+                    "https://t.me/Syntralgif/2",
+                    caption="🐊 Syntral the best 🐊\n- - - - - - - - - - - - - - - - - - - - - - - -\n- UserName: ❲ @{} ❳\n- ClickS: ❲ {} ❳\n- Type: {}\n- Save: ❲ Chaneel ❳\n- - - - - - - - - - - - - - - - - - - - - - - -\nThE KiNgS ❲ @Syntral - @S_i_D ❳ ".format(
                         username, trys, choice
                     ),
                 )
                 await event.client.send_message(
-                    "@E_7_V", f"- Done : @{username} !\n- By : @E_7_V - @Repthon !"
+                    "@S_i_D", f"- Done : @{username} !\n- By : @S_i_D - @Syntral !"
                 )
                 sedmod = False
                 break
@@ -228,8 +228,8 @@ async def _(event):
         try:
             ch = await zedub(
                 functions.channels.CreateChannelRequest(
-                    title="REPTHON HUNTER - تثبيت ريبثون",
-                    about="This channel to hunt username by - @Repthon",
+                    title="Syntral HUNTER - تثبيت السيد",
+                    about="This channel to hunt username by - @Syntral",
                 )
             )
             ch = ch.updates[1].channel_id
@@ -254,21 +254,21 @@ async def _(event):
                 )
                 await event.client.send_file(
                     ch,
-                    "https://t.me/Repthongif/2",
-                    caption="🐊 Repthon the best 🐊\n- - - - - - - - - - - - - - - - - - - - - - - -\n- UserName: ❲ @{} ❳\n- ClickS: ❲ {} ❳\n- Save: ❲ Chaneel ❳\n- - - - - - - - - - - - - - - - - - - - - - - -\nThE KiNgS ❲ @Repthon - @E_7_V ❳ ".format(
+                    "https://t.me/Syntralgif/2",
+                    caption="🐊 Syntral the best 🐊\n- - - - - - - - - - - - - - - - - - - - - - - -\n- UserName: ❲ @{} ❳\n- ClickS: ❲ {} ❳\n- Save: ❲ Chaneel ❳\n- - - - - - - - - - - - - - - - - - - - - - - -\nThE KiNgS ❲ @Syntral - @S_i_D ❳ ".format(
                         username, trys2
                     ),
                 )
                 await event.client.send_file(
                     event.chat_id,
-                    "https://t.me/Repthongif/2",
-                    caption="🐊 Repthon the best 🐊\n- - - - - - - - - - - - - - - - - - - - - - - -\n- UserName: ❲ @{} ❳\n- ClickS: ❲ {} ❳\n- Save: ❲ Chaneel ❳\n- - - - - - - - - - - - - - - - - - - - - - - -\nThE KiNgS ❲ @Repthon - @E_7_V ❳ ".format(
+                    "https://t.me/Syntralgif/2",
+                    caption="🐊 Syntral the best 🐊\n- - - - - - - - - - - - - - - - - - - - - - - -\n- UserName: ❲ @{} ❳\n- ClickS: ❲ {} ❳\n- Save: ❲ Chaneel ❳\n- - - - - - - - - - - - - - - - - - - - - - - -\nThE KiNgS ❲ @Syntral - @S_i_D ❳ ".format(
                         username, trys2
                     ),
                 )
                 await event.client.send_message(
-                    "@E_7_V",
-                    f"- Done : @{username} !\n- By : @E_7_V - @Repthon!\n- Hunting Log {trys2}",
+                    "@S_i_D",
+                    f"- Done : @{username} !\n- By : @S_i_D - @Syntral!\n- Hunting Log {trys2}",
                 )
                 swapmod = False
                 break
