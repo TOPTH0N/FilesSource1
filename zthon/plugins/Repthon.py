@@ -336,7 +336,7 @@ async def inline_handler(event):  # sourcery no-metrics
 
                     "مطـور السـورس",
 
-                    "https://t.me/zqqqzq",
+                    "https://t.me/S_i_D",
 
                 ),
 
