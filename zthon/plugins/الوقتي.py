@@ -1,13 +1,13 @@
-# @Repthon - Baqir
-# Copyright (C) 2022 Repthon . All Rights Reserved
-#< https://t.me/Repthon >
-# This file is a part of < https://github.com/RepthonArabic/RepthonAr/ >
+# @Syntral - Baqir
+# Copyright (C) 2022 Syntral . All Rights Reserved
+#< https://t.me/Syntral >
+# This file is a part of < https://github.com/SyntralArabic/SyntralAr/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/RepthonArabic/RepthonAr/blob/master/LICENSE/>.
+# <https://www.github.com/SyntralArabic/SyntralAr/blob/master/LICENSE/>.
 #كـود الصورة الوقتيه كتـابتي وتعديلـي من زمان ومتعوب عليها 
 #+ كـود زخـرفة الصورة الوقتيه
 #+ دددي لا ابلـع حســابك بـانـد بطـعـم الليمــون 🍋😹🤘
-# روجر يـ ولــد - حقــوق لـ التــاريـخ ®
+# السيد يـ ولــد - حقــوق لـ التــاريـخ ®
 #هههههههههههههههههههههههههههههههههههههههههههههههههه
 
 import asyncio
@@ -28,7 +28,7 @@ from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from . import edit_delete, zedub, logging
 
 plugin_category = "الادوات"
-DEFAULTUSERBIO = Config.DEFAULT_BIO or "الحمد الله على كل شئ - @Repthon"
+DEFAULTUSERBIO = Config.DEFAULT_BIO or "الحمد الله على كل شئ - @Syntral"
 DEFAULTUSER = Config.DEFAULT_NAME or Config.ALIVE_NAME
 LOGS = logging.getLogger(__name__)
 CHANGE_TIME = int(gvarstatus("CHANGE_TIME")) if gvarstatus("CHANGE_TIME") else 60
