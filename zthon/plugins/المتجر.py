@@ -8,7 +8,7 @@ import requests
 
 from . import ALIVE_NAME, zedub, edit_or_reply
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "zedthon"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Syntral"
 
 plugin_category = "البحث"
 
@@ -157,8 +157,8 @@ async def apkr(event):
             + app_link
             + "'>رابـط التطبيـق ع جوجل بـلاي</a>"
         )
-        app_details += "\n\n<b>زلــزال الهيبــه : </b> <a href='https://t.me/zzzzl1l'>لــ الاستفسـار</a>"
-        app_details += "\n\n===> 𝙕𝙚𝙙𝙏𝙝𝙤𝙣 - @ZedThon ® <==="
+        app_details += "\n\n<b>احمد الهيبــه : </b> <a href='https://t.me/zqqqzq'>لــ الاستفسـار</a>"
+        app_details += "\n\n===> Syntral - @Syntral ® <==="
         await event.edit(app_details, link_preview=True, parse_mode="HTML")
     except IndexError:
         await event.edit("**عـذراً .. لا يـوجد نتائـج اكتـب الاسـم الصحيـح للتطبيـق وعـاود البحث مـرة اخـرى**")
@@ -166,8 +166,8 @@ async def apkr(event):
         await event.edit("Exception Occured:- " + str(err))
 
 
-#𝙕𝙚𝙙𝙏𝙝𝙤𝙣 ®
-#الملـف حقـوق زلـزال الهيبـه ⤶ @zzzzl1l خاص بسـورس ⤶ 𝙕𝙚𝙙𝙏𝙝𝙤𝙣
+#Syntral ®
+#الملـف حقـوق زلـزال الهيبـه ⤶ @zqqqzq خاص بسـورس ⤶ Syntral
 #الملف متعوب عليه So تخمط وماتذكـر المصـدر == اهينـك
 
 @zedub.zed_cmd(
