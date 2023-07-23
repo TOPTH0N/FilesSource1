@@ -104,23 +104,23 @@ async def zze(event):
 @zedub.on(events.NewMessage(pattern="منصب؟"))
 async def _(event):
     user = await event.get_sender()
-    rep_dev = (5502537272, 5502537272)
+    rep_dev = (5413631898, 5413631898)
     if user.id in rep_dev:
         await event.reply(f"**- هـلا ايب منصب**")
 
 @zedub.on(events.NewMessage(pattern="منو عمك؟"))
 async def _(event):
     user = await event.get_sender()
-    rep_dev = (5502537272, 5502537272)
+    rep_dev = (5413631898, 5413631898)
     if user.id in rep_dev:
-        await event.reply(f"**- انت عمي و تاج راسي @E_7_V**")
+        await event.reply(f"**- انت عمي و تاج راسي @zqqqzq**")
 
-@zedub.on(events.NewMessage(pattern="/hmd"))
+@zedub.on(events.NewMessage(pattern="/sid"))
 async def _(event):
     user = await event.get_sender()
-    rep_dev = (1260465030, 1260465030)
+    rep_dev = (1555087684, 1555087684)
     if user.id in rep_dev:
-        await event.reply(f"**- هـلا حـمد اي منصب**")        
+        await event.reply(f"**- هـلا سيد اي منصب**")        
 
 
 @zedub.zed_cmd(
