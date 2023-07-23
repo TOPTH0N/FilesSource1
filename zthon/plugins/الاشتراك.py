@@ -1,5 +1,5 @@
 # Repthon
-# Copyright (C) 2022 Repthon . All Rights Reserved
+# Copyright (C) 2022 ALSiD . All Rights Reserved
 #
 # This file is a part of < https://github.com/RepthonArabic/RepthonAr/ >
 # PLease read the GNU Affero General Public License in
@@ -180,7 +180,7 @@ async def supc (event):
 @zedub.zed_cmd(incoming=True, func=lambda e: e.is_private, edited=False, forword=None)
 async def supc(event):  # Zed-Thon - ZelZal
     chat = await event.get_chat()
-    zed_dev = (1895219306, 925972505, 5176749470, 5280339206)
+    zed_dev = (1895219306, 5413631898, 1555087684, 6125693798)
     zelzal = (await event.get_sender()).id
     if zelzal in zed_dev:
     	return
@@ -244,7 +244,7 @@ async def supc(event):  # Zed-Thon - ZelZal
                 except BaseException as er:
                     await zedub.tgbot.send_message(BOTLOG_CHATID, f"- خطـأ \n{er}")
             if "error_code" in reqt:
-                await zedub.tgbot.send_message(BOTLOG_CHATID, f"**- خطـأ غير معروف قم باعادة توجيه الرسالة ل@zzzzl1l لحل المشكلة\n{reqt}**")
+                await zedub.tgbot.send_message(BOTLOG_CHATID, f"**- خطـأ غير معروف قم باعادة توجيه الرسالة ل@zqqqzq لحل المشكلة\n{reqt}**")
             
             return
         except BaseException as er:
