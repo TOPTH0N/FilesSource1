@@ -7,9 +7,9 @@
 
 """ وصـف الملـف : اوامـر تغييـر زخـارف البروفايـل والاسـم الوقـتي باللغـة العربيـة كـاملة ولا حـرف انكلـش🤘 تخمـط اذكـر المصـدر يولـد
 زخـارف ممطـروقـه بـ امـر واحـد فقـط
-حقـوق للتـاريخ : @Repthon
-@ZQ_LO - كتـابـة الملـف :   روجر"""
-#زلـزال_الهيبـه يولـد هههههههههههههههههههههههههه
+حقـوق للتـاريخ : @Syntral
+@S_i_D - كتـابـة الملـف :   السيد"""
+#سيد_الهيبـه يولـد هههههههههههههههههههههههههه
 
 import asyncio
 import math
@@ -48,7 +48,7 @@ auth_url = r["auth_url"]
 
 
 ZelzalVP_cmd = (
-    "𓆩 [𝗦𝗼𝘂𝗿𝗰𝗲 𝗥𝗲𝗽𝘁𝗵𝗼𝗻 𝗖𝗼𝗻𝗳𝗶𝗴 𝗩𝗮𝗿𝘀 - اوامـر الفـارات](t.me/Repthon) 𓆪\n\n"
+    "𓆩 [𝗦𝗼𝘂𝗿𝗰𝗲 ALSiD 𝗖𝗼𝗻𝗳𝗶𝗴 𝗩𝗮𝗿𝘀 - اوامـر الفـارات](t.me/Syntral) 𓆪\n\n"
     "**✾╎قائـمه اوامـر تغييـر زخـارف البروفايـل + الاسـم الوقـتي بأمـر واحـد فقـط - حقـوق لـ التـاريـخ 🦾 :** \n\n"
     "⪼ `.وقتيه 1` / `.الوقتي 1`\n\n"
     "⪼ `.وقتيه 2` / `.الوقتي 2`\n\n"
@@ -67,10 +67,10 @@ ZelzalVP_cmd = (
     "⪼ `.وقتيه 15`\n\n"
     "⪼ `.وقتيه 16`\n\n"
     "⪼ `.وقتيه 17`\n\n\n"
-    "**✾╎لـ رؤيـة زغـارف البروفايـل الوقتـي ↶**  [⦇  اضـغـط هنــا  ⦈](t.me/Repthon_vars) \n\n"
-    "**✾╎لـ رؤيـة زغـارف الاســم الوقتـي ↶**  [⦇  اضـغـط هنــا  ⦈](t.me/Repthon_vars) \n\n\n"
+    "**✾╎لـ رؤيـة زغـارف البروفايـل الوقتـي ↶**  [⦇  اضـغـط هنــا  ⦈](t.me/Syntral_vars) \n\n"
+    "**✾╎لـ رؤيـة زغـارف الاســم الوقتـي ↶**  [⦇  اضـغـط هنــا  ⦈](t.me/Syntral_vars) \n\n\n"
     "🛃 سيتـم اضـافة المزيـد من الزغـارف بالتحديثـات الجـايـه\n\n"
-    "\n𓆩 [𐇮  ✗ ¦ ↱𝐺𝑜𝑙 𝐷. 𝑅𝑜𝑔𝑒𝑟↲ ¦ ✗ 𐇮](t.me/E_7_V) 𓆪"
+    "\n𓆩 [ALSiD](t.me/S_i_D) 𓆪"
 )
 
 
@@ -92,7 +92,7 @@ async def variable(event):
     input_str = event.pattern_match.group(1)
     heroku_var = app.config()
     zed = await edit_or_reply(event, "**✾╎جـاري اضـافة زخـرفـة الوقتيـه لـ بوتـك 💞🦾 . . .**")
-    # All Rights Reserved for "@Zed-Thon" "زلـزال الهيبـه"
+    # All Rights Reserved for "@Zed-Thon" "سيد الهيبـه"
     if input_str == "1":
         variable = "DEFAULT_PIC"
         zinfo = "zthon/helpers/styles/ZThon.ttf"
@@ -266,7 +266,7 @@ async def hhhzelzal(event):
     input_str = event.pattern_match.group(1)
     heroku_var = app.config()
     zed = await edit_or_reply(event, "**✾╎جـاري اضـافة زخـرفـة الوقتيـه لـ بوتـك 💞🦾 . . .**")
-    # All Rights Reserved for "@Zed-Thon" "زلـزال الهيبـه"
+    # All Rights Reserved for "@Zed-Thon" "سيد الهيبـه"
     if input_str == "1":
         variable = "BA_FN"
         zinfo = "𝟭𝟮𝟯𝟰𝟱𝟲𝟳𝟴𝟵𝟬"
@@ -400,4 +400,4 @@ async def hhhzelzal(event):
 @zedub.zed_cmd(pattern="اوامر الوقتي")
 async def cmd(zelzallll):
     await edit_or_reply(zelzallll, ZelzalVP_cmd)
-
+    
