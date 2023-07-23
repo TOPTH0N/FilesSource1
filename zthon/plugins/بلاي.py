@@ -9,8 +9,8 @@ plugin_category = "الترفيه"
 
 # بلاي 
 R = (
-    "**𓆰**  𝙎𝙊𝙐𝙍𝘾𝙀 𝙍𝙀𝙋𝙏𝙃𝙊𝙉   **العـاب الاونلايـن** 🎮𓆪 \n"
-    "◐━─━─━─━─𝐑𝐄𝐏𝐓𝐇𝐎𝐍─━─━─━─━◐\n\n"
+    "**𓆰**  𝗦𝗢𝗨𝗥𝗦𝗘 𝗔𝗟𝗦𝗜𝗗   **العـاب الاونلايـن** 🎮𓆪 \n"
+    "◐━─━─━─━─𝗔𝗟𝗦𝗜𝗗─━─━─━─━◐\n\n"
     "  ❶ **⪼**  [حرب الفضاء 🛸](https://t.me/gamee?game=ATARIAsteroids)   \n"
     "  ❷ **⪼**  [لعبة فلابي بيرد 🐥](https://t.me/awesomebot?game=FlappyBird)   \n"
     "  ❸ **⪼**  [القط المشاكس 🐱](https://t.me/gamee?game=CrazyCat)   \n"
@@ -30,8 +30,8 @@ R = (
     "  ⓱ **⪼**  [جيت واي 🚨](https://t.me/gamee?game=Getaway)   \n"
     "  ⓲ **⪼**  [الالـوان 🔮](https://t.me/gamee?game=ColorHit)   \n"
     "  ⓳ **⪼**  [مدفع الكرات🏮](https://t.me/gamee?game=NeonBlaster)   \n\n\n"
-    "**𓄂-** 𝙎𝙊𝙐𝙍𝘾𝙀 𝘿𝙀𝙑 **⪼**  [𐇮  ✗ ¦ ↱𝐺𝑜𝑙 𝐷. 𝑅𝑜𝑔𝑒𝑟↲ ¦ ✗ 𐇮](t.me/E_7_V)   \n"
-    "**𓆰** 𝙎𝙊𝙐𝙍𝘾𝙀 𝙍𝙀𝙋𝙊 **⪼**  [𝗥𝗲𝗽𝘁𝗵𝗼𝗻](https://t.me/Repthon)  "
+    "**𓄂-** 𝙎𝙊𝙐𝙍𝘾𝙀 𝘿𝙀𝙑 **⪼**  [ALSiD](t.me/S_i_D)   \n"
+    "**𓆰** 𝙎𝙊𝙐𝙍𝘾𝙀 𝙍𝙀𝙋𝙊 **⪼**  [ALSiD](https://t.me/Syntral)  "
 )
 
 
@@ -39,7 +39,7 @@ R = (
     pattern="بلاي$",
     command=("بلاي", plugin_category),
     info={
-        "header": "العـاب الانـلاين لـ سـورس ريبـــثون",
+        "header": "العـاب الانـلاين لـ سـورس السيد",
         "الاستـخـدام": "{tr}بلاي",
     },
 )
