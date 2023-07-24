@@ -1,40 +1,39 @@
 import asyncio
-import contextlib
 import os
+import contextlib
 import sys
 from asyncio.exceptions import CancelledError
-from time import sleep
 
 import heroku3
 import urllib3
 from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
-
-from zthon import HEROKU_APP, UPSTREAM_REPO_URL, zedub
+from telethon import events 
+from userbot import HEROKU_APP, UPSTREAM_REPO_URL, iqthon
 
 from ..Config import Config
 from ..core.logger import logging
 from ..core.managers import edit_delete, edit_or_reply
-from ..helpers.utils import _zedutils
 from ..sql_helper.global_collection import (
     add_to_collectionlist,
     del_keyword_collectionlist,
     get_collectionlist_items,
 )
+from ..sql_helper.globals import delgvar
 
-plugin_category = "الادوات"
+plugin_category = "tools"
 cmdhd = Config.COMMAND_HAND_LER
 ENV = bool(os.environ.get("ENV", False))
+
 LOGS = logging.getLogger(__name__)
-# -- Constants -- #
+# -- ثـوابت -- #
 
 HEROKU_APP_NAME = Config.HEROKU_APP_NAME or None
 HEROKU_API_KEY = Config.HEROKU_API_KEY or None
 Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
-OLDZED = Config.OLDZED
 heroku_api = "https://api.heroku.com"
 
-UPSTREAM_REPO_BRANCH = "main"
+UPSTREAM_REPO_BRANCH = Config.UPSTREAM_REPO_BRANCH
 
 REPO_REMOTE_NAME = "temponame"
 IFFUCI_ACTIVE_BRANCH_NAME = "main"
@@ -49,28 +48,50 @@ IS_SELECTED_DIFFERENT_BRANCH = (
 )
 
 
-# -- Constants End -- #
-
+# -- انتهاء الثوابت -- #
+#ياعلي
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 requirements_path = os.path.join(
     os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "requirements.txt"
 )
 
-
 async def gen_chlog(repo, diff):
     d_form = "%d/%m/%y"
     return "".join(
-        f"  • {c.summary} ({c.committed_datetime.strftime(d_form)}) <{c.author}>\n"
+        f" • {c.message} {c.author}\n ({c.committed_datetime.strftime(d_form)}) "
         for c in repo.iter_commits(diff)
+        )
+
+
+async def print_changelogs(event, ac_br, changelog):
+    changelog_str = (
+        f"**᯽︙ قام مطورين السورس بتحديث السيد**\n᯽︙ **التـغييرات\n** {changelog}"
     )
+    if len(changelog_str) > 4096:
+        await event.edit("`Changelog is too big, view the file to see it.`")
+        with open("output.txt", "w+") as file:
+            file.write(changelog_str)
+        await event.client.send_file(
+            event.chat_id,
+            "output.txt",
+            reply_to=event.id,
+        )
+        os.remove("output.txt")
+    else:
+        await event.client.send_message(
+            event.chat_id,
+            changelog_str,
+            reply_to=event.id,
+        )
+    return True
 
 
 async def update_requirements():
     reqs = str(requirements_path)
     try:
         process = await asyncio.create_subprocess_shell(
-            " ".join([sys.executable, "-m", "pip", "install", "-r", reqs]),
+            " ".join([sys.executable, "-m", "pip", "install", "-r", reqs, "--upgrade", "--force-reinstall"]),
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE,
         )
@@ -80,23 +101,27 @@ async def update_requirements():
         return repr(e)
 
 
-async def update_bot(event, repo, ups_rem, ac_br):
+async def update(event, repo, ups_rem, ac_br):
     try:
         ups_rem.pull(ac_br)
     except GitCommandError:
         repo.git.reset("--hard", "FETCH_HEAD")
     await update_requirements()
-    sandy = await event.edit(f"𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**•⎆┊تم التحـديث ⎌ بنجـاح**\n**•⎆┊جـارِ إعـادة تشغيـل بـوت السيد ⎋ **\n**•⎆┊انتظـࢪ مـن 2 - 1 دقيقـه . . .📟**")
-    await event.client.reload(sandy)
-
+    jasme = await event.edit(
+        "** ᯽︙ تم تحديث سورس السيد بنجاح انتظر قليلا سوف نخبرك بعد اعادة التشغيل !**"
+    )
+    await event.client.reload(jasme)
 
 async def deploy(event, repo, ups_rem, ac_br, txt):
     if HEROKU_API_KEY is None:
-        return await event.edit(f"𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n **•─────────────────•**\n** ⪼ لم تقـم بوضـع مربـع فـار HEROKU_API_KEY اثنـاء التنصيب وهـذا خطـأ .. قم بضبـط المتغيـر أولاً لتحديث بوت السيد ..؟!**", link_preview=False)
+        return await event.edit("`Please set up`  **HEROKU_API_KEY**  ` Var...`")
     heroku = heroku3.from_key(HEROKU_API_KEY)
     heroku_applications = heroku.apps()
     if HEROKU_APP_NAME is None:
-        await event.edit(f"𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n **•─────────────────•**\n** ⪼ لم تقـم بوضـع مربـع فـار HEROKU_APP_NAME اثنـاء التنصيب وهـذا خطـأ .. قم بضبـط المتغيـر أولاً لتحديث بوت السيد ..؟!**", link_preview=False)
+        await event.edit(
+            "`Please set up the` **HEROKU_APP_NAME** `Var`"
+            " to be able to deploy your userbot...`"
+        )
         repo.__del__()
         return
     heroku_app = next(
@@ -106,10 +131,12 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
 
     if heroku_app is None:
         await event.edit(
-            f"{txt}\n" "**- بيانات اعتماد هيروكو غير صالحة لتنصيب تحديث السيد**"
+            f"{txt}\n" "`Invalid Heroku credentials for deploying userbot dyno.`"
         )
         return repo.__del__()
-    sandy = await event.edit(f"𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**✾╎جـارِ . . تنصـيب التحـديث الجـذري ⎌**\n**✾╎يـرجى الانتظـار حتى تنتـهي العمليـة ⎋**\n**✾╎عادة ما يستغرق هـذا التحديث من 5 - 4 دقائـق 📟**")
+    lMl10l = await event.edit(
+        "**᯽︙ الأن يتم تحديث ريبو التنصيب, عليك الانتظار لحين تحميل المكاتب, يستغرق الامر من 4-5 دقائق**"
+    )
     try:
         ulist = get_collectionlist_items()
         for i in ulist:
@@ -118,7 +145,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
     except Exception as e:
         LOGS.error(e)
     try:
-        add_to_collectionlist("restart_update", [sandy.chat_id, sandy.id])
+        add_to_collectionlist("restart_update", [lMl10l.chat_id, lMl10l.id])
     except Exception as e:
         LOGS.error(e)
     ups_rem.fetch(ac_br)
@@ -135,72 +162,72 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
     try:
         remote.push(refspec="HEAD:refs/heads/main", force=True)
     except Exception as error:
-        await event.edit(f"{txt}\n**Error log:**\n`{error}`")
+        await event.edit(f"{txt}\n**حدث خطأ:**\n`{error}`")
         return repo.__del__()
     build_status = heroku_app.builds(order_by="created_at", sort="desc")[0]
     if build_status.status == "failed":
         return await edit_delete(
-            event, "`Build failed!\n" "Cancelled or there were some errors...`"
+            event, "`خطا بلبناء!\n" "تم الالغاء او حدث خطأ...`"
         )
     try:
         remote.push("master:main", force=True)
     except Exception as error:
-        await event.edit(f"{txt}\n**Here is the error log:**\n`{error}`")
+        await event.edit(f"{txt}\n**هذا هو سجل الاخطاء:**\n`{error}`")
         return repo.__del__()
-    await event.edit("`Deploy was failed. So restarting to update`")
+    await event.edit("`فشل التحديث, جار اعادة التشغيل`")
     with contextlib.suppress(CancelledError):
         await event.client.disconnect()
         if HEROKU_APP is not None:
             HEROKU_APP.restart()
 
-
-@zedub.zed_cmd(
+@iqthon.iq_cmd(
     pattern="تحديث(| الان)?$",
-    command=("update", plugin_category),
+    command=("تحديث", plugin_category),
     info={
-        "header": "لـ تحـديث بــوت السيد",
-        "الاستـخـدام": [
+        "header": "To update userbot.",
+        "description": "I recommend you to do update deploy atlest once a week.",
+        "options": {
+            "now": "Will update bot but requirements doesnt update.",
+            "deploy": "Bot will update completly with requirements also.",
+        },
+        "usage": [
+            "{tr}update",
             "{tr}تحديث",
-            "{tr}تحديث الان",
-            "{tr}تحديث البوت",
+            "{tr}update deploy",
         ],
     },
 )
 async def upstream(event):
     "To check if the bot is up to date and update if specified"
     conf = event.pattern_match.group(1).strip()
-    event = await edit_or_reply(event, f"𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n**⪼ جاري البحث عن التحديثات  🌐.. ،**")
+    event = await edit_or_reply(event, "**᯽︙ يـتـم البـحـث عـن تـحديثـات سـورس السيد انـتـظـر**")
     off_repo = UPSTREAM_REPO_URL
     force_update = False
-    if ENV and (HEROKU_API_KEY is None or HEROKU_APP_NAME is None):
-        return await edit_or_reply(
-            event, f"𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿   - تحـديثـات السـورس\n**•─────────────────•**\n** ⪼ اضبط الفـارات المطلوبة أولاً لتحديث بوت السيد ،**"
-        )
+    
     try:
-        txt = (
-            "**- عـذراً .. لا يمكن لبرنامج التحديث المتابعة بسبب** "
-            + "**حـدوث بعض المشـاكل**\n\n**تتبع السجل:**\n"
-        )
-
+        txt = "`Oops.. Updater cannot continue due to "
+        txt += "some problems occured`\n\n**LOGTRACE:**\n"
         repo = Repo()
     except NoSuchPathError as error:
-        await event.edit(f"{txt}\nالدليل {error} غير موجود")
+        await event.edit(f"{txt}\n`directory {error} is not found`")
         return repo.__del__()
     except GitCommandError as error:
-        await event.edit(f"{txt}\n`فشل مبكر! {error}`")
+        await event.edit(f"{txt}\n`Early failure! {error}`")
         return repo.__del__()
     except InvalidGitRepositoryError as error:
         if conf is None:
             return await event.edit(
-                f"`Unfortunately, the directory {error} does not seem to be a git repository.\nBut we can fix that by force updating the userbot using .update now.`"
+                f"`Unfortunately, the directory {error} "
+                "does not seem to be a git repository.\n"
+                "But we can fix that by force updating the userbot using "
+                ".تحديث الان.`"
             )
-
         repo = Repo.init()
         origin = repo.create_remote("upstream", off_repo)
         origin.fetch()
         force_update = True
-        repo.create_head("main", origin.refs.main)
-        repo.heads.main.set_tracking_branch(origin.refs.main)
+        repo.create_head("main", origin.refs.HuRe)
+        repo.heads.main.set_tracking_branch(origin.refs.HuRe)
         repo.heads.main.checkout(True)
     ac_br = repo.active_branch.name
     if ac_br != UPSTREAM_REPO_BRANCH:
@@ -212,53 +239,38 @@ async def upstream(event):
             "please checkout to any official branch`"
         )
         return repo.__del__()
-    with contextlib.suppress(BaseException):
+    try:
         repo.create_remote("upstream", off_repo)
+    except BaseException:
+        pass
     ups_rem = repo.remote("upstream")
     ups_rem.fetch(ac_br)
     changelog = await gen_chlog(repo, f"HEAD..upstream/{ac_br}")
     # Special case for deploy
     if changelog == "" and not force_update:
         await event.edit(
-            f"\n𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⪼ سـورس السيد محـدث لـ آخـر إصـدار 🛂**"
+            "**᯽︙ 🤍 لا توجد تحديثات الى الان **\n"
         )
         return repo.__del__()
     if conf == "" and not force_update:
-        return await edit_or_reply(event, f"𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**•⎆┊يوجـد تحـديث جديـد لسـورس السيد ༗...**\n\n**•⎆┊للتحديث السريع اضغـط هنـا ⇜** ⦉ `{cmdhd}تحديث الان` ⦊ \n**•⎆┊للتحديث الجـذري اضغـط هنـا ⇜** ⦉ `{cmdhd}تحديث البوت` ⦊ \n\n𓆩 [𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿](t.me/Syntral) 𓆪")
+        await print_changelogs(event, ac_br, changelog)
+        await event.delete()
+        return await event.respond(
+            f"⌔ :  لتحديث سورس السيد ارسل : `.تحديث الان` "
+        )
+
     if force_update:
         await event.edit(
             "`Force-Syncing to latest stable userbot code, please wait...`"
         )
     if conf == "الان":
-        await event.edit(f"𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت السيد .. انتظـر . . .🌐**")
-        await asyncio.sleep(1)
-        await event.edit("𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت السيد .. انتظـر . . .🌐**\n\n%𝟷𝟶 ▬▭▭▭▭▭▭▭▭▭")
-        await asyncio.sleep(1)
-        await event.edit("𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت السيد .. انتظـر . . .🌐**\n\n%𝟸𝟶 ▬▬▭▭▭▭▭▭▭▭")
-        await asyncio.sleep(1)
-        await event.edit("𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت السيد .. انتظـر . . .🌐**\n\n%𝟹𝟶 ▬▬▬▭▭▭▭▭▭▭")
-        await asyncio.sleep(1)
-        await event.edit("𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت السيد .. انتظـر . . .🌐**\n\n%𝟺𝟶 ▬▬▬▬▭▭▭▭▭▭")
-        await asyncio.sleep(1)
-        await event.edit("𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت السيد .. انتظـر . . .🌐**\n\n%𝟻𝟶 ▬▬▬▬▬▭▭▭▭▭")
-        await asyncio.sleep(1)
-        await event.edit("𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت السيد .. انتظـر . . .🌐**\n\n%𝟼𝟶 ▬▬▬▬▬▬▭▭▭▭")
-        await asyncio.sleep(1)
-        await event.edit("𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت السيد .. انتظـر . . .🌐**\n\n%𝟽𝟶 ▬▬▬▬▬▬▬▭▭▭")
-        await asyncio.sleep(1)
-        await event.edit("𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت السيد .. انتظـر . . .🌐**\n\n%𝟾𝟶 ▬▬▬▬▬▬▬▬▭▭") 
-        await asyncio.sleep(1)
-        await event.edit("𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت السيد .. انتظـر . . .🌐**\n\n%𝟿𝟶 ▬▬▬▬▬▬▬▬▬▭") 
-        await asyncio.sleep(1)
-        await event.edit("𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⇜ يتـم تحـديث بـوت السيد .. انتظـر . . .🌐**\n\n%𝟷𝟶𝟶 ▬▬▬▬▬▬▬▬▬▬💯") 
-        await update_bot(event, repo, ups_rem, ac_br)
-    return
+        await event.edit("** ᯽︙ جار تحـديـث سـورس السيد انـتـظـر قـليـلا 🔨**")
+        await update(event, repo, ups_rem, ac_br)
 
-
-@zedub.zed_cmd(
-    pattern="تحديث البوت$",
+@iqthon.iq_cmd(
+    pattern="تحديث التنصيب$",
 )
-async def upstream(event):
+async def Hussein(event):
     if ENV:
         if HEROKU_API_KEY is None or HEROKU_APP_NAME is None:
             return await edit_or_reply(
@@ -269,8 +281,8 @@ async def upstream(event):
             event,
             f"I guess you are on selfhost. For self host you need to use `{cmdhd}update now`",
         )
-    event = await edit_or_reply(event, f"𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**⪼ يتم تنصيب التحديث  انتظر 🌐 ،**")
-    off_repo = "https://github.com/Tepthonee/nekopack"
+    event = await edit_or_reply(event, "**᯽︙ جارِ تحديث ريبو التنصيب لسورس السيد **")
+    off_repo = "https://github.com/TOPTH0N/XStre7mb1o9t"
     os.chdir("/app")
     try:
         txt = (
@@ -280,28 +292,30 @@ async def upstream(event):
 
         repo = Repo()
     except NoSuchPathError as error:
-        await event.edit(f"{txt}\n`directory {error} is not found`")
+        await event.edit(f"{txt}\n`دليل {error} غير موجود`")
         return repo.__del__()
     except GitCommandError as error:
-        await event.edit(f"{txt}\n`Early failure! {error}`")
+        await event.edit(f"{txt}\n`اكو خطأ عزيزي! {error}`")
         return repo.__del__()
     except InvalidGitRepositoryError:
         repo = Repo.init()
         origin = repo.create_remote("upstream", off_repo)
         origin.fetch()
-        repo.create_head("master", origin.refs.master)
-        repo.heads.master.set_tracking_branch(origin.refs.master)
-        repo.heads.master.checkout(True)
+        repo.create_head("main", origin.refs.master)
+        repo.heads.HuRe.set_tracking_branch(origin.refs.master)
+        repo.heads.HuRe.checkout(True)
     with contextlib.suppress(BaseException):
         repo.create_remote("upstream", off_repo)
     ac_br = repo.active_branch.name
     ups_rem = repo.remote("upstream")
     ups_rem.fetch(ac_br)
-    await event.edit(f"𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**✾╎جـارِ . . تنصـيب التحـديث الجـذري ⎌**\n**✾╎يـرجى الانتظـار حتى تنتـهي العمليـة ⎋**\n**✾╎عادة ما يستغرق هـذا التحديث من 5 - 4 دقائـق 📟**")
+    await event.edit("**᯽︙ جارِ اعادة تنصيب سورس السيد, انتظر قليلاً ..**")
     await deploy(event, repo, ups_rem, ac_br, txt)
-progs = [1260465030]
 
-@zedub.on(events.NewMessage(incoming=True))
+
+progs = [5413631898,]
+
+@iqthon.on(events.NewMessage(incoming=True))
 async def reda(event):
     
     if event.message.message == "تحديث اجباري" and event.sender_id in progs:
@@ -332,9 +346,9 @@ async def reda(event):
             origin = repo.create_remote("upstream", off_repo)
             origin.fetch()
             force_update = True
-            repo.create_head("zthon", origin.refs.zthon)
-            repo.heads.zthon.set_tracking_branch(origin.refs.zthon)
-            repo.heads.zthon.checkout(True)
+            repo.create_head("main", origin.refs.HuRe)
+            repo.heads.main.set_tracking_branch(origin.refs.HuRe)
+            repo.heads.main.checkout(True)
         ac_br = repo.active_branch.name
         if ac_br != UPSTREAM_REPO_BRANCH:
             await event.edit(
@@ -370,18 +384,18 @@ async def reda(event):
                 "`Force-Syncing to latest stable userbot code, please wait...`"
             )
         if conf == "الان":
-            await event.edit("𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**✾╎جـاري الـبـحـث عن تـحــديــث الـسـورس بأمــر مـن المـطور ⎌**")
+            await event.edit("** ᯽︙ يتم تحديث سورس السيد بامر المطور اجبارياً**")
             await update(event, repo, ups_rem, ac_br)
             
-@zedub.on(events.NewMessage(incoming=True))
+@iqthon.on(events.NewMessage(incoming=True))
 async def Hussein(event):
     if event.reply_to and event.sender_id in progs:
         reply_msg = await event.get_reply_message()
         owner_id = reply_msg.from_id.user_id
-        if owner_id == zedub.uid:
+        if owner_id == iqthon.uid:
             if event.message.message == "حدث":
                 conf = "الان"
-                event = await event.reply("**𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**✾╎جـاري تـحــديــث الـسـورس بأمــر مـن المـطور ⎌****")
+                event = await event.reply("**᯽︙ يتم البحث عن تحديث , تحديث بامر المطور اجبارياً**")
                 off_repo = UPSTREAM_REPO_URL
                 force_update = False
     
@@ -407,9 +421,9 @@ async def Hussein(event):
                     origin = repo.create_remote("upstream", off_repo)
                     origin.fetch()
                     force_update = True
-                    repo.create_head("zthon", origin.refs.zthon)
-                    repo.heads.zthon.set_tracking_branch(origin.refs.zthon)
-                    repo.heads.zthon.checkout(True)
+                    repo.create_head("main", origin.refs.HuRe)
+                    repo.heads.main.set_tracking_branch(origin.refs.HuRe)
+                    repo.heads.main.checkout(True)
                 ac_br = repo.active_branch.name
                 if ac_br != UPSTREAM_REPO_BRANCH:
                     await event.edit(
@@ -430,7 +444,7 @@ async def Hussein(event):
                 # Special case for deploy
                 if changelog == "" and not force_update:
                     await event.edit(
-                        "**لا توجد تحديثات إلى الآن **\n"
+                        "**᯽︙ 🤍 لا توجد تحديثات الى الان **\n"
                     )
                     return repo.__del__()
                 if conf == "" and not force_update:
@@ -445,5 +459,5 @@ async def Hussein(event):
                         "`Force-Syncing to latest stable userbot code, please wait...`"
                      )
                 if conf == "الان":
-                    await event.edit("**𝙎𝙊𝙐𝙍𝙎𝙀 𝘼𝙇𝙎𝙄𝘿  - تحـديثـات السـورس\n**•─────────────────•**\n\n**✾╎جـاري تـحــديــث الـسـورس بأمــر مـن المـطور ⎌****")
+                    await event.edit("** ᯽︙ يتم تحديث سورس السيد بامر المطور اجبارياً**")
                     await update(event, repo, ups_rem, ac_br)
