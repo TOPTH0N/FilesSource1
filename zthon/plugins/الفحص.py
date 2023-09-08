@@ -37,7 +37,7 @@ async def amireallyalive(event):
     _, check_sgnirts = check_data_base_heal_th()
     Z_EMOJI = gvarstatus("ALIVE_EMOJI") or "✥┊"
     ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "** بـوت السيد Syntral يعمـل .. بنجـاح ☑️ 𓆩 **"
-    ZED_IMG = gvarstatus("ALIVE_PIC") or "https://graph.org/file/64ae7877acd791b791354.mp4"
+    ZED_IMG = gvarstatus("ALIVE_PIC") or "https://graph.org/file/d9d67257e6bdd2b10f8df.mp4"
     zed_caption = gvarstatus("ALIVE_TEMPLATE") or zed_temp
     caption = zed_caption.format(
         ALIVE_TEXT=ALIVE_TEXT,
