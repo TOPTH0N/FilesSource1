@@ -81,7 +81,7 @@ async def startupmessage():
         if BOTLOG:
             Config.ZEDUBLOGO = await zedub.tgbot.send_file(
                 BOTLOG_CHATID,
-                "https://graph.org/file/d9d67257e6bdd2b10f8df.mp4",
+                "https://graph.org/file/ed3862dd12484c9138cab.mp4",
                 caption="**•⎆┊تـم بـدء تشغـيل سـورس السيد الخاص بك .. بنجاح 🧸♥️**",
                 buttons=[(Button.url("𝐒𝐘𝐍𝐓𝐑𝐀𝑳", "https://t.me/Syntral"),)],
             )
